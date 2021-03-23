@@ -37,7 +37,7 @@ def bfs(puzzle_s):
             res = cnt
             break
         pos = puzzle_c.find("0")
-        row = pos // 3
+        row = pos // 3 # 행과 열의 위치를 계산
         col = pos % 3
 
         for i in range(4):
@@ -48,7 +48,7 @@ def bfs(puzzle_s):
                 continue
 
             puzzle_n = puzzle_c
-            # print(nrow * 3 + ncol)
+            # print(nrow * 3 + ncol) 행열의 idx 위치 반환
             puzzle_n = swap(puzzle_n, pos, nrow * 3 + ncol)
 
             if not visited.get(puzzle_n):
