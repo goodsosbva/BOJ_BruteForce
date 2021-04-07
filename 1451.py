@@ -9,6 +9,7 @@ for _ in range(n):
     lineInput = [0] + list(map(int, list(input())))
     retangle.append(lineInput)
 
+print(retangle)
 
 # 답은 최댓값을 출력해야 하므로, 0으로 시작
 res = 0
@@ -21,6 +22,8 @@ for row in range(1, n + 1):
     for col in range(1, m + 1):
         sum[row][col] = sum[row - 1][col] + sum[row][col - 1] - sum[row - 1][col - 1] + retangle[row][col]
 
+print(sum)
+
 
 def sumCalculate(x1, y1, x2, y2):
     return sum[x2][y2] - sum[x2][y1 - 1] - sum[x1 - 1][y2] + sum[x1 - 1][y1 - 1]
@@ -29,8 +32,8 @@ def sumCalculate(x1, y1, x2, y2):
 # 첫 번째 경우: 세로로만 분할한 경우
 for i in range(1, m-1):
     for j in range(i+1, m):
-        r1 = sumCalculate(1, 1, n, i)
-        r2 = sumCalculate(1, i + 1, n, j)
+        r1 = sumCalculate(1, 1, n, i)  # print(n, i, r1)
+        r2 = sumCalculate(1, i + 1, n, j)  # print(n, j, r2)
         r3 = sumCalculate(1, j + 1, n, m)
         if res < r1 * r2 * r3:  # 경우의 수는 곱으로 계산함, 최대값 계산
             res = r1 * r2 * r3
